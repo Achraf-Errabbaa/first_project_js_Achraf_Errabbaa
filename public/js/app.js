@@ -32,7 +32,7 @@ while (true) {
     break;
 }else if (choice === "sign up") {
     let fullName = prompt("enter your full name:").trim()
-    fullName = fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase()
+    fullName = fullName.split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
     let email = prompt("enter your email:")
     let age = prompt("enter your age:")
     let password = prompt("enter your password:")
