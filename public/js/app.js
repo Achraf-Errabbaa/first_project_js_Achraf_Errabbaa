@@ -2,8 +2,8 @@ class bank {
     constructor(){
         this.user = {};
     }
-    signUp(fullName, email, password, age){
-        this.user[email] = {fullName, password, age}
+    signUp(fullName, email, age, password){
+        this.user[email] = {fullName,age,email , password}
         console.log("your acount has been created");
     }
     logIn(email,password){
@@ -20,8 +20,37 @@ class bank {
     }else{
         console.log("invalid email or password");
     }
-
     }
 }
 
+let account = new bank();
+while (true) {
+    let choice = prompt("choose an option:sign up || log in || change Password || exit ");
+    choice = choice.toLowerCase()
+    if(choice === "exit") {
+    console.log("bye");
+    break;
+}else if (choice === "sign up") {
+    let fullName = prompt("enter your full name:").trim()
+    let email = prompt("enter your email:")
+    let age = prompt("enter your age:")
+    let password = prompt("enter your password:")
+    account.signUp(fullName, email, age, password);
+    }else if (choice === "log in") {
+        let email = prompt("enter your email:")
+        let password = prompt("enter your password:")
+        account.logIn(email, password)
+    }else if (choice === "change password") {
+        let email = prompt("enter your email:")
+        let currentPassword = prompt("enter your current password:")
+        let newPassword = prompt("enter your new password:")
+        account.changePassword(email, password , currentPassword, newPassword);
+        break;
+    }else{
+        console.log("your choice was invalid try again");
+    }
+}
+
+
+console.log(account.user);
 
