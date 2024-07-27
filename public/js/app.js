@@ -52,7 +52,7 @@ class bank {
         return password.length >= 7;
     }
     passwordcheck(password){
-        
+
     }
 }
 let account = new bank();
@@ -69,34 +69,34 @@ while (true) {
 
         let age = parseInt(prompt("enter your age:").trim())
         let password = prompt("enter your password:").trim()
-        // if (!account.validateName(fullName)) {
-        //     console.log("invalid name");
-        //     break
-        // }
-        // if (!account.validateSpecial(fullName)) {
-        //     console.log("special character or number detected");
-        //     break
-        // }
-        // if (!account.validateEmail(email)) {
-        //     console.log("email is invalid becuse of space in the middle");
-        //     break;
-        //     }
-        // if (!account.validateEmailLength(email)) {
-        //     console.log("email has less than 10 charcaters");
-        //     break;
-        // }
-        // if(!account.atTheRateSign(email)){
-        //     console.log("email has more than one @");
-        //     continue
-        // }
-        // if(!account.onlyNumbers(age)){
-        //     console.log("invalid age");
-        //     continue
-        // }
-        // if (!account.zeroOrThree(age)) {
-        //     console.log("age has 0 characters or it has 3 or more characters");
-        //     break
-        // }
+        if (!account.validateName(fullName)) {
+            console.log("invalid name");
+            break
+        }
+        if (!account.validateSpecial(fullName)) {
+            console.log("special character or number detected");
+            break
+        }
+        if (!account.validateEmail(email)) {
+            console.log("email is invalid becuse of space in the middle");
+            break;
+            }
+        if (!account.validateEmailLength(email)) {
+            console.log("email has less than 10 charcaters");
+            break;
+        }
+        if(!account.atTheRateSign(email)){
+            console.log("email has more than one @");
+            continue
+        }
+        if(!account.onlyNumbers(age)){
+            console.log("invalid age");
+            continue
+        }
+        if (!account.zeroOrThree(age)) {
+            console.log("age has 0 characters or it has 3 or more characters");
+            break
+        }
         if (!account.validatepassword(password)) {
             console.log("password is invalid becuse of space in the middle");
             break;
@@ -107,6 +107,7 @@ while (true) {
         if (!account.passwordLength(password)) {
             console.log("password has less than 7");
         }
+
         account.signUp(fullName, email, age, password);
     } else if (choice === "log in") {
         let email = prompt("enter your email:")
