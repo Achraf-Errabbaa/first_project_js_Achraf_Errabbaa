@@ -25,17 +25,36 @@ class bank {
         return fullName.length >= 5;
     }
     validateSpecial(fullName){
-        return!/[&\/\\#,+()$~%.'":*?<>{}]/.test(fullName);
-    }
+        return /[&\/\\#,+()$~%.'":*?<>{}]/.test}
     validateEmail(email){
     return!/\s/.test(email);
     }
-
+    validateEmailLength(email){
+        return email.length >= 10;
+    }
+    atTheRateSign(email){
+        return email.match(/@/g).length === 1;
+    }
+    onlyNumbers(age){
+        return typeof age ==="number";
+    }
+    zeroOrThree(age){
+        return String(age).length <= 2
+    }
+    validatepassword(password){
+        return!/\s/.test(password);
+    }
+    PasswordSpecial(password){
+        const specialpassword = ["@" , "#" , "-" , "+" , "*" , "/"]
+        return specialpassword.some(char => String(password).includes(char))
+    }
+    passwordLength(password){
+        return password.length >= 7;
 }
-
+}
 let account = new bank();
 while (true) {
-    let choice = prompt("choose an option:sign up || log in || change Password || exit ");
+    let choice = prompt("choose an option:sign up || log in || change Password || exit");
     choice = choice.toLowerCase()
     if (choice === "exit") {
         console.log("bye");
@@ -44,16 +63,46 @@ while (true) {
         let fullName = prompt("enter your full name:").trim()
         fullName = fullName.split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
         let email = prompt("enter your email:").trim()
-        
-        let age = prompt("enter your age:")
-        let password = prompt("enter your password:")
-        if (!account.validateName(fullName)) {
-            console.log("invalid name");
-            continue
+
+        let age = parseInt(prompt("enter your age:").trim())
+        let password = prompt("enter your password:").trim()
+        // if (!account.validateName(fullName)) {
+        //     console.log("invalid name");
+        //     break
+        // }
+        // if (!account.validateSpecial(fullName)) {
+        //     console.log("special character or number detected");
+        //     break
+        // }
+        // if (!account.validateEmail(email)) {
+        //     console.log("email is invalid becuse of space in the middle");
+        //     break;
+        //     }
+        // if (!account.validateEmailLength(email)) {
+        //     console.log("email has less than 10 charcaters");
+        //     break;
+        // }
+        // if(!account.atTheRateSign(email)){
+        //     console.log("email has more than one @");
+        //     continue
+        // }
+        // if(!account.onlyNumbers(age)){
+        //     console.log("invalid age");
+        //     continue
+        // }
+        // if (!account.zeroOrThree(age)) {
+        //     console.log("age has 0 characters or it has 3 or more characters");
+        //     break
+        // }
+        if (!account.validatepassword(password)) {
+            console.log("password is invalid becuse of space in the middle");
+            break;
         }
-        if (!account.validateSpecial(fullName)) {
-            console.log("special character or number detected");
-            continue
+        if (!account.PasswordSpecial(password)) {
+            console.log("password dose not contain at least one special character");
+        }
+        if (!account.passwordLength(password)) {
+            console.log("password has less than 7");
         }
         account.signUp(fullName, email, age, password);
     } else if (choice === "log in") {
