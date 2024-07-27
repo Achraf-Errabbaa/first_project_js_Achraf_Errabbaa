@@ -25,7 +25,7 @@ class bank {
         return fullName.length >= 5;
     }
     validateSpecial(fullName){
-        return /[&\/\\#,+()$~%.'":*?<>{}]/.test}
+        return /[&\/\\#,+()$~%.'":*?<>{}]/.test(fullName)}
     validateEmail(email){
     return!/\s/.test(email);
     }
@@ -50,7 +50,10 @@ class bank {
     }
     passwordLength(password){
         return password.length >= 7;
-}
+    }
+    passwordcheck(password){
+        
+    }
 }
 let account = new bank();
 while (true) {
